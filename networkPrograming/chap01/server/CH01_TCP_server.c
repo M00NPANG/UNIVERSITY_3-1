@@ -18,7 +18,7 @@ int main(void)
 	memset(&serverAddr, 0, sizeof(serverAddr));
 	serverAddr.sin_family		= AF_INET;
 	serverAddr.sin_port			= htons(9000); 
-	serverAddr.sin_addr.s_addr	= inet_addr("127.0.0.1");
+	serverAddr.sin_addr.s_addr	= inet_addr("192.168.62.50");
 
 	// 3. bind() 함수 호출...
 	// - 생성된 소켓 IP, port 설정...
