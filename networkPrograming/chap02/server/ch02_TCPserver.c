@@ -18,7 +18,7 @@ int main(void)
 	memset(&serverAddr, 0, sizeof(serverAddr));
 	serverAddr.sin_family		= AF_INET;
 	serverAddr.sin_port			= htons(9000); 
-	serverAddr.sin_addr.s_addr	= inet_addr("127.0.0.1");
+	serverAddr.sin_addr.s_addr	= inet_addr("192.168.62.50");			//서버의 주소 -> 클라이언트에게 알려주어야 하는 주소임
 
 	// 3. bind() 함수 호출...
 	// - 생성된 소켓 IP, port 설정...
@@ -27,7 +27,7 @@ int main(void)
 	// 4. listen() 함수 호출...
 	printf("> listen 함수를 호출합니다.\n");
 	int backLog = 5; 
-	listen(serverSocket, backLog );
+	listen(serverSocket, backLog );		//클라이언트가 연결 시도를 해도 못 함. 리슨 함수가 있어야함
 
 	// 5. accept 함수 호출...
 	SOCKET			clientSocket;
@@ -36,7 +36,7 @@ int main(void)
 	addrLen = sizeof(clientAddr);
 
 	printf("> accept 함수를 호출하여 클라이언트 연결 요청을 대기합니다.\n");
-	clientSocket = accept(serverSocket, (SOCKADDR*)&clientAddr, &addrLen);
+	clientSocket = accept(serverSocket, (SOCKADDR*)&clientAddr, &addrLen);			// 수송신 과정을 담당하는 함수
 
 	printf("> 클라이언트(IP:%s, Port:%d)가 연결되었습니다.\n",
 		inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
