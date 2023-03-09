@@ -20,7 +20,7 @@ int main(void)
 	memset(&serverAddr, 0, sizeof(serverAddr));
 	serverAddr.sin_family			= AF_INET;
 	serverAddr.sin_port				= htons(9000);  
-	serverAddr.sin_addr.s_addr		= inet_addr("127.0.0.1");
+	serverAddr.sin_addr.s_addr		= inet_addr("196.168.204.11");
 
 	// 서버와 연결하기...
 	errorNum = connect(clientSocket, (SOCKADDR *)&serverAddr, sizeof(serverAddr) );
